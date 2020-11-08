@@ -1,24 +1,30 @@
 #include <stdio.h>
 #include <assert.h>
 
-unsigned srl(unsigned x, int k)
+unsigned srl(unsigned x, int k)/*Perform a logical right shift*/
 {
-
     unsigned xsra = (int)x >> k; /*Perform shift arithmetically*/
-    return (~0) ^ xsra;
+
+    int w = sizeof(int)<<3;
+    int mask = (int)(-1) << (w - k);
+    return ~mask & xsra;
 }
 
-int sra(int x, int k)
+int sra(int x, int k)   /*Perform a arithmetic right shift*/
 {
 
     int xsrl = (unsigned)x >> k; /*Perform shift logically*/
-    return (~0) ^ xsrl;
+
+    int w = sizeof(int)<<3;
+    int mask = (int)-1 << (w - k);
+    
+    int m = 1 << (w - 1);
+    mask &= !(x & m) - 1;   
+    return mask | xsrl;
 }
 
 int main()
 {
-    assert(srl(~0, 32) == 0);
-    assert(sra(0, 32) == -1);
     unsigned test_unsigned = 0x12345678;
     int test_int = 0x12345678;
 

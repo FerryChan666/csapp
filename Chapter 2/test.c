@@ -28,7 +28,9 @@ void test_show_bytes(int val){
     show_pointer(pval);
 }
 
-
+int odd_ones(unsigned x){
+    return (0xAAAAAAAA & x);
+}
 
 int main()
 {
@@ -39,7 +41,8 @@ int main()
     // show_bytes((byte_pointer)&mx, sizeof(short));
     // char *s="0123456789";
     // show_bytes((byte_pointer)s, 11);
+    int mask = 0xAA + (0xAA << 8);
+    show_int(0xAAAAAAAA & 0x10101011);
 
-    int x = 0x89ABCDEF;
-    show_int(x);
+    printf("%d\n", 010);
 }
