@@ -1,4 +1,6 @@
 #include<stdio.h>
+#include<limits.h>
+
 typedef unsigned char *byte_pointer;
 void show_bytes(byte_pointer start, size_t len){
     size_t i;
@@ -41,8 +43,9 @@ int main()
     // show_bytes((byte_pointer)&mx, sizeof(short));
     // char *s="0123456789";
     // show_bytes((byte_pointer)s, 11);
-    int mask = 0xAA + (0xAA << 8);
-    show_int(0xAAAAAAAA & 0x10101011);
 
-    printf("%d\n", 010);
+    // int mask = 0xAA + (0xAA << 8);
+    // show_int(0xAAAAAAAA & 0x10101011);
+
+    printf("%d\n%d\n", INT_MAX, INT_MIN);
 }
